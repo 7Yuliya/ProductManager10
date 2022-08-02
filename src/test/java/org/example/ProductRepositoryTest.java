@@ -29,7 +29,7 @@ public class ProductRepositoryTest {
         repo.save(product2);
         repo.save(product3);
         repo.save(product4);
-        Assertions.assertThrows(NotFoundException.class, () ->{repo.removeById(5);
+        Assertions.assertThrows(NotFoundException.class, () ->{repo.removeById(9);
 
                 });
 
