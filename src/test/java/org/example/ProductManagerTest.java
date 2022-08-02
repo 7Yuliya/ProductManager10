@@ -12,7 +12,7 @@ public class ProductManagerTest {
 
     Product product1 = new Book(1, "Ася", 1_000, "Иван Сергеевич Тургенев");
     Product product2 = new Book(2, "Князь Серебряный", 1_200, "Алексей Константинович Толстой");
-    Product product3 = new Smartphone(3, "Самсунг", 15_000, "Южнокорейская группа компаний");
+    Product product3 = new Smartphone(7, "Самсунг", 15_000, "Южнокорейская группа компаний");
     Product product4 = new Smartphone(4, "Apple", 35_000, "Аиериканская корпорация");
 
 

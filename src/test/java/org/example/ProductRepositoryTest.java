@@ -13,7 +13,7 @@ public class ProductRepositoryTest {
     Product product4 = new Smartphone(4, "Apple", 35_000, "Аиериканская корпорация");
 
     @Test
-    public void test() {
+    public void testRemoveById() {
         ProductRepository repo = new ProductRepository();
 
         repo.removeById(product4.getId());
@@ -23,13 +23,13 @@ public class ProductRepositoryTest {
 
 
     @Test
-    public void test1() {
+    public void testNotFoundException() {
         ProductRepository repo = new ProductRepository();
         repo.save(product1);
         repo.save(product2);
         repo.save(product3);
         repo.save(product4);
-        Assertions.assertThrows(NotFoundException.class, () ->{repo.removeById(2);
+        Assertions.assertThrows(NotFoundException.class, () ->{repo.removeById(5);
 
                 });
 
