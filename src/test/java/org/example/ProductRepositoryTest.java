@@ -1,6 +1,7 @@
 package org.example;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -15,11 +16,16 @@ public class ProductRepositoryTest {
     @Test
     public void testRemoveById() {
         ProductRepository repo = new ProductRepository();
-
+        repo.save(product1);
+        repo.save(product2);
+        repo.save(product3);
+        repo.save(product4);
         repo.removeById(product4.getId());
+        Product[] actual = repo.findAll();
+        Product[] expected = {product1, product2, product3};
 
+        assertArrayEquals(expected, actual);
     }
-
 
 
     @Test
@@ -29,12 +35,13 @@ public class ProductRepositoryTest {
         repo.save(product2);
         repo.save(product3);
         repo.save(product4);
-        Assertions.assertThrows(NotFoundException.class, () ->{repo.removeById(9);
+        Assertions.assertThrows(NotFoundException.class, () -> {
+            repo.removeById(5);
 
-                });
+        });
 
 
-}
+    }
 
 }
 

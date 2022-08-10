@@ -13,6 +13,7 @@ public class ProductManager {
         repo.save(product);
     }
 
+
     public Product[] findAll() {
         Product[] all = repo.findAll();
         Product[] reversed = new Product[all.length];

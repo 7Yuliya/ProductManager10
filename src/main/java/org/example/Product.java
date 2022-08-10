@@ -11,9 +11,9 @@ public class Product {
         this.id = id;
         this.name = name;
         this.price = price;
-    }
 
-    public int getId() {
+    }
+    public  int getId() {
         return id;
     }
 

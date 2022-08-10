@@ -3,7 +3,7 @@ package org.example;
 public class ProductRepository {
 
 
-    private Product [] products = new Product[0];
+    Product[] products = new Product[0];
 
     public void save(Product product) {
         Product[] tmp = new Product[products.length + 1];
@@ -15,57 +15,58 @@ public class ProductRepository {
         tmp[tmp.length - 1] = product;
         products = tmp;
     }
-    public Product[] findAll() {
-        Product [] tmp = new Product [products.length ];
 
-        for (int i = 0; i < products.length; i++) {
-
-            tmp [i] = products  [products.length - 1 - i];
-        }
-        return tmp;
-    }
-
-    //  return products;
-    // }
     public Product findById(int id) {
+        Product result = null;
+        for (Product product :
+                products) {
+            if (product.getId() == id) {
 
-        for (Product Product :
-                     products  ) {
-                if (id != Product.getId() ) {
+                result = product;
 
-                    throw new NotFoundException("Element with id: " + id + " not found");
-                }
+                break;
+            }
+        }
+        return result;
 
-            return Product;
 
     }
 
+    public void removeById(int removeId) {
+        if (findById(removeId) == null) {
+            throw new NotFoundException("Element with id: " + removeId + " not found");
+        }
+        Product[] tmp = new Product[products.length - 1];
+        int copyToIndex = 0;
+        for (Product product :
+                products) {
+            if (product.getId() != removeId) {
+                tmp[copyToIndex] = product;
 
+                copyToIndex++;
+            }
 
+            products = tmp;
+        }
+    }
 
+    public Product[] findAll() {
+        //  Product[] tmp = new Product[products.length];
 
+        //  for (int i = 0; i < products.length; i++) {
 
-    return null;
+        //     tmp[i] = products[products.length - 1 - i];
+        //  }
+        //  return tmp;
+        //  }
 
+        return products;
     }
 
 
-    public Product removeById(int id) {
-         //  Product[] tmp = new Product[products.length - 1];
-       //int copyToIndex = 0;
-      //for (Product Product :
-      //      products  ) {
-     //     if (Product.getId() !=  id) {
-      //       tmp[copyToIndex] = Product;
-
-        //     copyToIndex++;
-       //   }
-
-        //  products  = tmp;
+}
 
 
-    return findById( id);
 
-    }
 
-    }
+

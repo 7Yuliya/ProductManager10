@@ -1,5 +1,6 @@
 package org.example;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -25,12 +26,33 @@ public class ProductManagerTest {
         manager.add(product4);
     }
 
+
+    @Test
+    public void ShouldRemoveById() {
+        repo.removeById(product4.getId());
+        Product[] actual = manager.findAll();
+        Product[] expected = {product3, product2, product1};
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void ShouldNotFoundException() {
+        Assertions.assertThrows(NotFoundException.class, () -> {
+            repo.removeById(5);
+
+        });
+
+
+    }
+
     @Test
     public void ShouldAddProduct() {
 
 
         Product[] actual = manager.findAll();
-        Product[] expected = {product1, product2, product3, product4};
+        Product[] expected = {product4, product3, product2, product1
+        };
 
         assertArrayEquals(expected, actual);
     }
